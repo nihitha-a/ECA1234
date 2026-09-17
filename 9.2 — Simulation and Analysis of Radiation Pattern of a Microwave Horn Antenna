@@ -1,0 +1,21 @@
+clc;
+clear;
+close all;
+
+theta = linspace(-pi/2,pi/2,1000);
+
+E = (cos(theta)).^4;
+E = abs(E);
+E_norm = E/max(E);
+
+figure;
+polarplot(theta,E_norm,'LineWidth',2);
+grid on;
+title('Microwave Horn Antenna Radiation Pattern');
+
+figure;
+plot(rad2deg(theta),E_norm,'LineWidth',2);
+grid on;
+xlabel('Angle (Degrees)');
+ylabel('Normalized Radiation Intensity');
+title('Horn Antenna Radiation Pattern');
