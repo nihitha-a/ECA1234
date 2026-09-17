@@ -1,0 +1,22 @@
+clc;
+clear;
+close all;
+
+Pin = 100;
+
+P2 = [20 40 60 80];
+P3 = [80 60 40 20];
+
+P2_percent = (P2/Pin)*100;
+P3_percent = (P3/Pin)*100;
+
+disp('Port2(mW) Port3(mW) Port2(%) Port3(%)');
+disp([P2' P3' P2_percent' P3_percent']);
+
+figure;
+bar([P2' P3'],'grouped');
+grid on;
+xlabel('Cases');
+ylabel('Power (mW)');
+title('Power Distribution in E-Plane Tee');
+legend('Port 2','Port 3');
