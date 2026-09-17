@@ -1,0 +1,21 @@
+clc;
+clear;
+close all;
+
+f = 8:0.1:12;
+
+fr_coax = 9.5;
+fr_wave = 10.5;
+
+A_coax = 1./sqrt(1+((f-fr_coax)/0.2).^2);
+A_wave = 1./sqrt(1+((f-fr_wave)/0.3).^2);
+
+figure;
+plot(f,A_coax,'-o');
+hold on;
+plot(f,A_wave,'-s');
+grid on;
+xlabel('Frequency (GHz)');
+ylabel('Response');
+title('Resonator Frequency Characteristics');
+legend('Coaxial Resonator','Waveguide Resonator');
