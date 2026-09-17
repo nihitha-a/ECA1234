@@ -1,0 +1,28 @@
+clc;
+clear;
+close all;
+
+Pin = [100 150 200];
+Pout = [80 120 160];
+Pc = [10 15 20];
+Pi = [1 1.5 2];
+
+Coupling = 10*log10(Pin./Pc);
+InsertionLoss = 10*log10(Pin./Pout);
+Directivity = 10*log10(Pc./Pi);
+Isolation = 10*log10(Pin./Pi);
+
+disp('Case  Coupling  Insertion Loss  Directivity  Isolation');
+disp([(1:3)' Coupling' InsertionLoss' Directivity' Isolation']);
+
+figure;
+plot(1:3,Coupling,'-o');
+hold on;
+plot(1:3,InsertionLoss,'-s');
+plot(1:3,Directivity,'-^');
+plot(1:3,Isolation,'-*');
+grid on;
+xlabel('Case');
+ylabel('Value (dB)');
+title('Directional Coupler Characteristics');
+legend('Coupling','Insertion Loss','Directivity','Isolation');
