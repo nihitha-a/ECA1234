@@ -1,0 +1,31 @@
+clc;
+clear;
+close all;
+
+f = 8:0.5:12;
+Coupling = [-18 -19 -20 -20 -20 -19 -18 -17 -16];
+
+figure;
+plot(f,Coupling,'-o','LineWidth',2);
+grid on;
+xlabel('Frequency (GHz)');
+ylabel('Coupling Factor (dB)');
+title('Bethe Hole Coupler Characteristics');
+
+disp('Frequency(GHz)  Coupling Factor(dB)');
+disp([f' Coupling']);
+
+Pin = [100 100 100];
+Pc = [5 10 20];
+
+C = 10*log10(Pin./Pc);
+
+disp('Input Power  Coupled Power  Coupling Coefficient');
+disp([Pin' Pc' C']);
+
+figure;
+plot(Pc,C,'-o');
+grid on;
+xlabel('Coupled Power (mW)');
+ylabel('Coupling Coefficient (dB)');
+title('Coupling Coefficient of Bethe Hole Coupler');
