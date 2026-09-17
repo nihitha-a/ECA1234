@@ -1,0 +1,41 @@
+clc;
+clear;
+close all;
+
+% Oscillation modes
+Mode = [1.5 2.5 3.5];
+
+% Repeller voltage (V)
+Vr = [-180 -210 -250];
+
+% Output voltage (V)
+Vout = [0.6 1.4 0.9];
+
+% Assume load resistance
+R = 50;     % Ohms
+
+% Calculate output power
+P = (Vout.^2)/(2*R)*1000;   % mW
+
+% Display results
+fprintf('Mode\tRepeller(V)\tOutput(V)\tPower(mW)\n');
+
+for i = 1:length(Mode)
+    fprintf('%.1f\t%d\t\t%.2f\t\t%.2f\n', ...
+        Mode(i),Vr(i),Vout(i),P(i));
+end
+
+% Maximum power
+[maxP,index] = max(P);
+
+fprintf('\nMaximum Output Power = %.2f mW\n',maxP);
+fprintf('Maximum Power Mode = %.1f\n',Mode(index));
+
+% Plot
+figure;
+bar(Mode,P);
+grid on;
+
+xlabel('Oscillation Mode');
+ylabel('Output Power (mW)');
+title('Output Power vs Oscillation Mode');
