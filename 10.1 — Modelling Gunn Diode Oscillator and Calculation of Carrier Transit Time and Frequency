@@ -1,0 +1,24 @@
+clc;
+clear;
+close all;
+
+L = [5 10 15 20 25];
+
+vd = 1e7;
+L_cm = L*1e-4;
+
+T = L_cm./vd;
+f = 1./T;
+
+T_ps = T*1e12;
+f_GHz = f/1e9;
+
+disp('Length(um)  Transit Time(ps)  Frequency(GHz)');
+disp([L' T_ps' f_GHz']);
+
+figure;
+plot(L,f_GHz,'-o');
+grid on;
+xlabel('Active Region Length (um)');
+ylabel('Oscillation Frequency (GHz)');
+title('Gunn Diode Oscillation Frequency');
