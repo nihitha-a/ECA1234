@@ -1,0 +1,18 @@
+clc;
+clear;
+close all;
+
+Pin = [100 150 200];
+Pc = [10 15 20];
+
+Coupling = 10*log10(Pin./Pc);
+
+disp('Input Power  Coupled Power  Coupling Factor');
+disp([Pin' Pc' Coupling']);
+
+figure;
+plot(Pin,Coupling,'-o');
+grid on;
+xlabel('Input Power (mW)');
+ylabel('Coupling Factor (dB)');
+title('Directional Coupler Characteristics');
