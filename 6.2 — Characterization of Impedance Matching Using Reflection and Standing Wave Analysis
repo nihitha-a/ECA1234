@@ -1,0 +1,24 @@
+clc;
+clear;
+close all;
+
+Z0 = 50;
+ZL = [25 50 100];
+
+Gamma = (ZL-Z0)./(ZL+Z0);
+G = abs(Gamma);
+
+Pref = G.^2*100;
+Ptrans = (1-G.^2)*100;
+
+VSWR = (1+G)./(1-G);
+
+disp('ZL  Reflection  Reflected Power(%)  Transmitted Power(%)  VSWR');
+disp([ZL' G' Pref' Ptrans' VSWR']);
+
+figure;
+plot(ZL,VSWR,'-o');
+grid on;
+xlabel('Load Impedance (Ohm)');
+ylabel('VSWR');
+title('VSWR Characteristics');
