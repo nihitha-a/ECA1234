@@ -1,0 +1,23 @@
+clc;
+clear;
+close all;
+
+V = [1 2 3 4 5 6 7 8];
+I = [80 120 240 300 260 150 130 180];
+
+dV = diff(V);
+dI = diff(I);
+Rdiff = dV./dI;
+
+disp('Voltage(V)  Current(mA)');
+disp([V' I']);
+
+disp('Differential Resistance');
+disp(Rdiff');
+
+figure;
+plot(V,I,'-o');
+grid on;
+xlabel('Voltage (V)');
+ylabel('Current (mA)');
+title('Gunn Diode V-I Characteristics');
