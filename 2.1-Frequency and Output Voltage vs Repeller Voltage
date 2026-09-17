@@ -1,0 +1,35 @@
+clc;
+clear;
+close all;
+
+% Repeller voltage (V)
+Vr = [-180 -190 -200 -210 -220 -230];
+
+% Measured/assumed output voltage (mV)
+Vout = [20 45 80 120 95 40];
+
+% Frequency (GHz) - sample values
+f = [9.00 9.01 9.02 9.03 9.02 9.01];
+
+% Display table
+fprintf('Repeller Voltage(V)  Output Voltage(mV)  Frequency(GHz)\n');
+
+for i = 1:length(Vr)
+    fprintf('%10d %20.2f %18.2f\n', Vr(i), Vout(i), f(i));
+end
+
+% Find maximum output
+[maxV, index] = max(Vout);
+
+fprintf('\nMaximum Output Voltage = %.2f mV\n', maxV);
+fprintf('Repeller Voltage at Maximum Output = %d V\n', Vr(index));
+fprintf('Frequency at Maximum Output = %.2f GHz\n', f(index));
+
+% Plot mode characteristics
+figure;
+plot(Vr,Vout,'o-','LineWidth',2);
+grid on;
+
+xlabel('Repeller Voltage (V)');
+ylabel('Output Voltage (mV)');
+title('Mode Characteristics of Reflex Klystron');
