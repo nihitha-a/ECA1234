@@ -1,0 +1,31 @@
+clc;
+clear;
+close all;
+
+theta = linspace(0,2*pi,1000);
+
+E_dipole = abs(sin(theta));
+E_dipole = E_dipole/max(E_dipole);
+
+E_stripline = abs(cos(theta));
+E_stripline = E_stripline/max(E_stripline);
+
+figure;
+polarplot(theta,E_dipole,'LineWidth',2);
+grid on;
+title('Half-Wave Dipole Radiation Pattern');
+
+figure;
+polarplot(theta,E_stripline,'LineWidth',2);
+grid on;
+title('Stripline Antenna Radiation Pattern');
+
+figure;
+plot(rad2deg(theta),E_dipole);
+hold on;
+plot(rad2deg(theta),E_stripline);
+grid on;
+xlabel('Angle (Degrees)');
+ylabel('Normalized Radiation Intensity');
+title('Dipole and Stripline Radiation Patterns');
+legend('Dipole','Stripline');
