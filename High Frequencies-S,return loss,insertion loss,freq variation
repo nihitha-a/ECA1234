@@ -1,0 +1,45 @@
+clc;
+clear;
+close all;
+
+% Frequency range
+f = linspace(1,10,100);       % GHz
+
+% Example S-parameters of a microwave network
+S11 = 0.2*exp(-1j*2*pi*f/10); % Reflection coefficient
+S21 = 0.8*exp(-1j*2*pi*f/10); % Transmission coefficient
+
+% Return Loss and Insertion Loss
+RL = -20*log10(abs(S11));     % dB
+IL = -20*log10(abs(S21));     % dB
+
+% Display values
+fprintf('S11 = %.2f\n',abs(S11(1)));
+fprintf('S21 = %.2f\n',abs(S21(1)));
+
+% Plot Return Loss
+figure;
+plot(f,RL,'LineWidth',2);
+grid on;
+xlabel('Frequency (GHz)');
+ylabel('Return Loss (dB)');
+title('Return Loss vs Frequency');
+
+% Plot Insertion Loss
+figure;
+plot(f,IL,'LineWidth',2);
+grid on;
+xlabel('Frequency (GHz)');
+ylabel('Insertion Loss (dB)');
+title('Insertion Loss vs Frequency');
+
+% S-parameter performance
+figure;
+plot(f,abs(S11),'LineWidth',2);
+hold on;
+plot(f,abs(S21),'LineWidth',2);
+grid on;
+xlabel('Frequency (GHz)');
+ylabel('Magnitude');
+legend('|S11|','|S21|');
+title('S-Parameters vs Frequency');
