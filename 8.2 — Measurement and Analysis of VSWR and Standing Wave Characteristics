@@ -1,0 +1,25 @@
+clc;
+clear;
+close all;
+
+Z0 = 50;
+ZL = [75 100 150];
+
+Gamma = abs((ZL-Z0)./(ZL+Z0));
+VSWR = (1+Gamma)./(1-Gamma);
+
+disp('Load Impedance  Reflection Coefficient  VSWR');
+disp([ZL' Gamma' VSWR']);
+
+x = linspace(0,2*pi,500);
+
+for i = 1:length(Gamma)
+    V = abs(1 + Gamma(i)*cos(2*x));
+    
+    figure;
+    plot(x,V);
+    grid on;
+    xlabel('Position');
+    ylabel('Normalized Voltage');
+    title(['Standing Wave Pattern, ZL = ',num2str(ZL(i)),' Ohm']);
+end
