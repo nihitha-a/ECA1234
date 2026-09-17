@@ -1,0 +1,22 @@
+clc;
+clear;
+close all;
+
+c = 3e8;
+f = [8 9 10]*1e9;
+a = 22.86e-3;
+
+lambda0 = c./f;
+lambdac = 2*a;
+
+lambdag = lambda0./sqrt(1-(lambda0/lambdac).^2);
+
+disp('Frequency(GHz)  Free Space Wavelength(m)  Guide Wavelength(m)');
+disp([f'/1e9 lambda0' lambdag']);
+
+figure;
+plot(f/1e9,lambdag,'-o');
+grid on;
+xlabel('Frequency (GHz)');
+ylabel('Guide Wavelength (m)');
+title('Guide Wavelength Characteristics');
