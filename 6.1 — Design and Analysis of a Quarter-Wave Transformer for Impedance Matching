@@ -1,0 +1,26 @@
+clc;
+clear;
+close all;
+
+Z0 = [50 50 75];
+ZL = [100 200 300];
+
+ZT = sqrt(Z0.*ZL);
+
+c = 3e8;
+f = 10e9;
+
+lambda = c/f;
+Lq = lambda/4;
+
+disp('Z0   ZL   Matching Impedance');
+disp([Z0' ZL' ZT']);
+
+fprintf('Quarter Wave Length = %.4f m\n',Lq);
+
+figure;
+plot(ZL,ZT,'-o');
+grid on;
+xlabel('Load Impedance (Ohm)');
+ylabel('Transformer Impedance (Ohm)');
+title('Quarter-Wave Transformer');
