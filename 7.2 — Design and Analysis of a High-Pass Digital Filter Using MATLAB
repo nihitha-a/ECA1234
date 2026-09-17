@@ -1,0 +1,15 @@
+clc;
+clear;
+close all;
+
+Fs = 10000;
+N = 4;
+Fc = [1000 2000 3000];
+
+for i = 1:length(Fc)
+    [b,a] = butter(N,Fc(i)/(Fs/2),'high');
+    
+    figure;
+    freqz(b,a,1024,Fs);
+    title(['High-Pass Filter, Cutoff = ',num2str(Fc(i)),' Hz']);
+end
